@@ -1,10 +1,10 @@
-package com.psew.moneytransfer;
+package com.psew.moneytransferapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MoneyTransferApplicationTests {
+class MoneyTransferApiApplicationTests {
 
 	@Test
 	void contextLoads() {
