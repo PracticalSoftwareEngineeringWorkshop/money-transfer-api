@@ -1,13 +1,13 @@
-package com.psew.moneytransfer;
+package com.psew.moneytransferapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MoneyTransferApplication {
+public class MoneyTransferApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MoneyTransferApplication.class, args);
+		SpringApplication.run(MoneyTransferApiApplication.class, args);
 	}
 
 }

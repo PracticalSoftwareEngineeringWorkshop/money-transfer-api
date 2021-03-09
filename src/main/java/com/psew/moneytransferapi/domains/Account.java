@@ -1,4 +1,4 @@
-package com.psew.moneytransfer.domains;
+package com.psew.moneytransferapi.domains;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

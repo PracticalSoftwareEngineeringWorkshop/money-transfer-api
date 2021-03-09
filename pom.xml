@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.psew</groupId>
-	<artifactId>moneytransfer</artifactId>
+	<artifactId>money-transfer-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>moneytransfer</name>
+	<name>money-transfer-api</name>
 	<description>Money Transfer API developed as a demo for Practical Software Engineering Workshop</description>
 	<properties>
 		<java.version>11</java.version>
