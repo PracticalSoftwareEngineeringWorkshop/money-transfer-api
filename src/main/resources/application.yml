@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/moneytransfer
+    username: moneytransfer
+    password: m0n3ytr4n5f3r
+  jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect
+  jpa.show-sql: false
+  jpa.hibernate.ddl-auto: update
