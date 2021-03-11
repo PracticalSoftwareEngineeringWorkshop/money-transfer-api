@@ -1,0 +1,22 @@
+### Account List
+GET {{host-url}}{{base-url}}/account/list
+Content-Type: application/json
+
+### Create Account
+POST {{host-url}}{{base-url}}/account/create
+Content-Type: application/json
+
+# json data to post/send
+{
+  "firstName": "Biniam",
+  "lastName": "Asnake",
+  "email" : "biniamasnake@gmail.com",
+  "phoneNumber": "+251966272502",
+  "pin": "1234",
+  "balance": 2000
+}
+
+### Delete Account
+DELETE {{host-url}}{{base-url}}/account/1
+Content-Type: application/json
+
