@@ -1,10 +1,16 @@
 package com.psew.moneytransferapi.services;
 
+import static com.psew.moneytransferapi.exceptions.AccountException.ACCOUNT_NOT_FOUND_EXCEPTION;
+import static com.psew.moneytransferapi.exceptions.AccountException.INVALID_ACCOUNT_EXCEPTION;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.psew.moneytransferapi.domains.Account;
+import com.psew.moneytransferapi.exceptions.AccountException;
 import com.psew.moneytransferapi.repositories.AccountRepository;
+
+import java.sql.SQLException;
 
 /**
  * Account Service accepts requests from the Controller and communicates with the repository to save and retrieve data.
@@ -14,9 +20,9 @@ import com.psew.moneytransferapi.repositories.AccountRepository;
 @Service
 public class AccountService {
 
-	@Autowired
 	private final AccountRepository accountRepository;
 
+	@Autowired
 	public AccountService(AccountRepository accountRepository) {
 		this.accountRepository = accountRepository;
 	}
@@ -26,7 +32,41 @@ public class AccountService {
 	}
 
 	public Account createAccount(Account account) {
-		//TODO validate
+		return accountRepository.save(account);
+	}
+
+	public Account getAccountById(Long id) {
+		return accountRepository.findById(id)
+				.orElseThrow(() -> new AccountException(ACCOUNT_NOT_FOUND_EXCEPTION));
+	}
+
+	/**
+	 * Updates Account if it is available in the database
+	 *
+	 * @param accountId: ID of the account to be updated
+	 * @param account: Account to be updated
+	 * @return Nothing
+	 */
+	public void updateAccount(Long accountId, Account account) throws SQLException {
+
+		accountRepository.updateAccount(accountId, account.getFirstName(), account.getLastName(), account.getEmail(), account.getPhoneNumber(), account.getPin());
+	}
+
+	/**
+	 * Updates the balance of an Account if it is available in the {code}accounts{code} map
+	 *
+	 * @param account: Account to be updated
+	 * @param newBalance: the new balance that should be saved
+	 * @return The updated Account object
+	 */
+	public Account updateAccountBalance(Account account, Double newBalance) {
+
+		if (account == null) {
+			throw new AccountException(INVALID_ACCOUNT_EXCEPTION);
+		}
+
+		account.setBalance(newBalance);
+
 		return accountRepository.save(account);
 	}
 
