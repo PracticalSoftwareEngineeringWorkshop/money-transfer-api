@@ -16,6 +16,33 @@ Content-Type: application/json
   "balance": 2000
 }
 
+### Create Another Account
+POST {{host-url}}{{base-url}}/account/create
+Content-Type: application/json
+
+# json data to post/send
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email" : "johndoe@gmail.com",
+  "phoneNumber": "+49555555555",
+  "pin": "5555",
+  "balance": 1000
+}
+
+### Update an existing Account
+PUT {{host-url}}{{base-url}}/account/4
+Content-Type: application/json
+
+# json data to send for PUT request
+{
+  "firstName": "Biniam Updated",
+  "lastName": "Asnake Updated",
+  "email" : "biniamasnakeupdated@gmail.com",
+  "phoneNumber": "+251000000000",
+  "pin": "0000"
+}
+
 ### Delete Account
 DELETE {{host-url}}{{base-url}}/account/1
 Content-Type: application/json

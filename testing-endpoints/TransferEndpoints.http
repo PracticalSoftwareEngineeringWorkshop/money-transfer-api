@@ -1,0 +1,20 @@
+### Get Transfer by ID
+GET {{host-url}}{{base-url}}/transfer/1
+Content-Type: application/json
+
+### Transfer Money
+POST {{host-url}}{{base-url}}/transfer
+Content-Type: application/json
+
+# json data to post/send
+{
+  "senderId": 4,
+  "receiverId": 6,
+  "amount": 200,
+  "reason": "repayment of loan"
+}
+
+### Delete Transfer
+DELETE {{host-url}}{{base-url}}/transfer/1
+Content-Type: application/json
+
