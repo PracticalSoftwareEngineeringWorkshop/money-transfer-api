@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.psew</groupId>
 	<artifactId>money-transfer-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>money-transfer-api</name>
 	<description>Money Transfer API developed as a demo for Practical Software Engineering Workshop</description>
 	<properties>
@@ -104,6 +104,43 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+
+			<!-- maven-surefire-plugin is designed for running unit tests and if any of the tests fail then it will fail the build immediately. -->
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>false</skipTests>
+					<includes>
+						<!-- Default surefire includes -->
+						<include>**/Test*.java</include>
+						<include>**/*Test.java</include>
+						<include>**/*Tests.java</include>
+						<include>**/*TestCase.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+
+			<!-- maven-failsafe-plugin is designed for running integration tests, and decouples failing the build if there are test failures from actually running the tests. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<configuration>
+					<failIfNoTests>false</failIfNoTests>
+					<skipTests>false</skipTests>
+					<includes>
+						<!-- Our integration test naming convention -->
+						<include>**/*IntegrationTest.java</include>
+					</includes>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
