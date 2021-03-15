@@ -69,11 +69,11 @@ public class TransferService {
 
 		// This operation can be replaced by overriding equals() and hashcode() in Account domain.
 		// We are doing this here not to add so much code on Account domain. Similar implementation is provided in Transfer domain class.
-		if(sender.getId().equals(receiver.getId())) {
+		if (sender.getId().equals(receiver.getId())) {
 			throw new TransferException(SAME_ACCOUNT_TRANSFER_EXCEPTION);
 		}
 
-		if(sender.getBalance() < transferRequest.getAmount()) {
+		if (sender.getBalance() < transferRequest.getAmount()) {
 			throw new TransferException(INSUFFICIENT_BALANCE_EXCEPTION);
 		} else {
 			Double newSenderBalance = sender.getBalance() - transferRequest.getAmount();

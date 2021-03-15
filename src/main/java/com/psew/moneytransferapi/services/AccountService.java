@@ -31,7 +31,7 @@ public class AccountService {
 		return accountRepository.findAll();
 	}
 
-	public Account createAccount(Account account) {
+	public Account createAccount(Account account) throws Exception {
 		return accountRepository.save(account);
 	}
 
