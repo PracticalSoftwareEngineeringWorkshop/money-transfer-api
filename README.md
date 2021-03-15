@@ -1,3 +1,5 @@
+Travis CI build status: [![Build Status](https://travis-ci.com/PracticalSoftwareEngineeringWorkshop/money-transfer-api.svg?branch=main)](https://travis-ci.com/PracticalSoftwareEngineeringWorkshop/money-transfer-api)
+
 # Money Transfer API
 
 ### DB Scripts  
