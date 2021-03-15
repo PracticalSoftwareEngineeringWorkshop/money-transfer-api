@@ -9,8 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
-import java.sql.SQLException;
 
 /**
  * Set of endpoints for storing and retrieving Accounts
@@ -36,26 +34,36 @@ public class AccountController {
     }
 
     @PostMapping("/create")
-    public Account createAccount(@Valid @RequestBody Account account) {
+    public ResponseEntity<?> createAccount(@Valid @RequestBody Account account) throws Exception {
 
-        return accountService.createAccount(account);
+        try {
+            Account createdAccount = accountService.createAccount(account);
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .body("{\"message\" : \"Account with id " + createdAccount.getId() + " is created successfully.\"}");
+
+        } catch (Exception e) {
+            log.error("Error creating Account in database: ", e);
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body("{\"error\" : \"Error creating Account in database. Please verify possible duplicates in the provided data.\"}");
+        }
     }
 
     /**
      * Updates account
      * Given the id and the updated account data, this operation makes modifications to an existing object
-     * @param accountId account id that needs to be deleted
-     * @param account account object to be updated
      *
-     * @return
-     * code = 200, message = Account with id {accountId} is updated successfully.
+     * @param accountId account id that needs to be deleted
+     * @param account   account object to be updated
+     * @return code = 200, message = Account with id {accountId} is updated successfully.
      * code = 400, error = Error updating Account in database. Please verify you send all required fields
      */
     @PutMapping("/{accountId}")
     public ResponseEntity<?> updateAccount(@PathVariable("accountId") Long accountId, @RequestBody Account account) {
         try {
             accountService.updateAccount(accountId, account);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             log.error("Error updating Account in database: ", e);
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
@@ -93,6 +101,6 @@ public class AccountController {
 
         return ResponseEntity
                 .ok()
-                .body("{\"message\" : \"Account with id " + accountId + " is successfully deleted\"}");
+                .body("{\"message\" : \"Account with id " + accountId + " is deleted successfully.\"}");
     }
 }

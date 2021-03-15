@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "firstName": "Biniam",
+    "lastName": "Asnake",
+    "email": "biniamasnake@gmail.com",
+    "phoneNumber": "+251000000000",
+    "pin": 0,
+    "balance": 1400.0,
+    "isVerified": true
+  },
+  {
+    "id": 2,
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "johndoe@gmail.com",
+    "phoneNumber": "+49555555555",
+    "pin": 5555,
+    "balance": 1600.0,
+    "isVerified": true
+  },
+  {
+    "id": 3,
+    "firstName": "tobedeleted",
+    "lastName": "tobedeleted",
+    "email": "tobedeleted@gmail.com",
+    "phoneNumber": "0",
+    "pin": 0,
+    "balance": 0.0,
+    "isVerified": true
+  }
+]
