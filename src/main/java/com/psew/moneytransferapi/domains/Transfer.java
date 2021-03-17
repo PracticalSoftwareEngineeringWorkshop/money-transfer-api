@@ -56,6 +56,7 @@ public class Transfer {
 	@ManyToOne(fetch = FetchType.EAGER)
     private Account receiver;
 
+	@NotNull(message = "Amount is mandatory")    // the field must be not null
 	@Column(nullable = false)
     private Double amount;
 

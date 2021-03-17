@@ -19,6 +19,7 @@ import java.sql.SQLException;
 @Repository
 public interface AccountRepository extends CrudRepository<Account, Long> {
 
+    // This is how you create a custom query to perform database operation
     @Modifying
     @Transactional
     @Query(value = "UPDATE Account " +

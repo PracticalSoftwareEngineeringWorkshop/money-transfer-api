@@ -1,9 +1,9 @@
 package com.psew.moneytransferapi;
 
+import com.psew.moneytransferapi.util.TestDataGenerator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureTestDatabase
-public class AccountControllerTest extends AbstractBaseTest {
+public class AccountControllerIntegrationTest extends AbstractBaseTest {
 
     private static final String BASE_URL = "/api/account";
 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class AccountException extends RuntimeException {
 
-	public static final String ACCOUNT_NOT_FOUND_EXCEPTION = "The account is invalid.";
+	public static final String ACCOUNT_NOT_FOUND_EXCEPTION = "The account is not found.";
 	public static final String INVALID_ACCOUNT_EXCEPTION = "Invalid account id";
 
 	public AccountException(String message) {

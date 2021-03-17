@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest
 @Log
 @AutoConfigureTestDatabase
-public class TransferServiceIT {
+public class TransferServiceIntegrationTest {
 
     @Autowired
     private TransferService transferService;

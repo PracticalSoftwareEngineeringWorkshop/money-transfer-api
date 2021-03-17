@@ -12,3 +12,6 @@ spring:
   jpa.hibernate.ddl-auto: update
   # The SQL dialect makes Hibernate generate better SQL for the chosen database
   jpa.properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+
+# https://www.baeldung.com/spring-boot-actuators
+management.endpoints.web.exposure.include: '*'
