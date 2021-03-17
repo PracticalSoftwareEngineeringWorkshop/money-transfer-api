@@ -51,6 +51,19 @@ public class AccountController {
     }
 
     /**
+     * Get account by Id
+     * Given the id, get account data
+     *
+     * @param accountId account id to fetch
+     * @return Account account object retrieved
+     */
+    @GetMapping("/{accountId}")
+    public Account getAccount(@PathVariable("accountId") Long accountId) {
+
+        return accountService.getAccountById(accountId);
+    }
+
+    /**
      * Updates account
      * Given the id and the updated account data, this operation makes modifications to an existing object
      *

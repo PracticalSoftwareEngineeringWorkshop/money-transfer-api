@@ -1,4 +1,4 @@
-package com.psew.moneytransferapi;
+package com.psew.moneytransferapi.util;
 
 import com.psew.moneytransferapi.domains.Account;
 

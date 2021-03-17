@@ -2,7 +2,7 @@ package com.psew.moneytransferapi;
 
 import com.psew.moneytransferapi.domains.Account;
 import com.psew.moneytransferapi.repositories.AccountRepository;
-import org.junit.Before;
+import com.psew.moneytransferapi.util.TestDataGenerator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase
-public class AccountRepositoryIT {
+public class AccountRepositoryIntegrationTest {
 
     @Autowired
     private TestEntityManager mgr;
