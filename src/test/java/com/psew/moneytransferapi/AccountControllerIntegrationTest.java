@@ -23,7 +23,7 @@ public class AccountControllerIntegrationTest extends AbstractBaseTest {
     private static final String BASE_URL = "/api/account";
 
     @Test
-    public void getAllAccounts_returns_ok() throws Exception {
+    public void shouldGetAllAccountsAndReturnHttpOk() throws Exception {
         mvc.perform(
                 get(BASE_URL + "/list")
                         .accept(MediaType.APPLICATION_JSON)
@@ -36,7 +36,7 @@ public class AccountControllerIntegrationTest extends AbstractBaseTest {
     }
 
     @Test
-    public void createAccount_returns_createdStatusAndMessage() throws Exception {
+    public void shouldCreateAccountAndReturnCreatedStatusAndMessage() throws Exception {
 
         mvc.perform(
                 post(BASE_URL + "/create")
@@ -52,7 +52,7 @@ public class AccountControllerIntegrationTest extends AbstractBaseTest {
     }
 
     @Test
-    public void createAccount_withDuplicateData_returns_error() throws Exception {
+    public void shouldReturnAnErrorWhenCreatingAccountWithDuplicateData() throws Exception {
 
         String data = "{" +
                 "  \"firstName\": \"Biniam\"," +
@@ -77,7 +77,7 @@ public class AccountControllerIntegrationTest extends AbstractBaseTest {
     }
 
     @Test
-    public void updateAccount_returns_okAndMessage() throws Exception {
+    public void shouldUpdateAccountAndReturnHttpOkAndMessage() throws Exception {
 
         String data = "{" +
                 "  \"firstName\": \"Jane Updated\"," +
@@ -101,7 +101,7 @@ public class AccountControllerIntegrationTest extends AbstractBaseTest {
     }
 
     @Test
-    public void deleteAccountById_returns_okAndMessage() throws Exception {
+    public void shouldDeleteAccountByIdAndReturnHttpOkAndMessage() throws Exception {
 
         mvc.perform(
                 delete(BASE_URL + "/" + 3)
@@ -115,7 +115,7 @@ public class AccountControllerIntegrationTest extends AbstractBaseTest {
     }
 
     @Test
-    public void deleteAccountById_withWrongId_returns_error() throws Exception {
+    public void shouldReturnErrorWhenDeletingAccountByIdWithWrongId() throws Exception {
 
         mvc.perform(
                 delete(BASE_URL + "/" + 0)
