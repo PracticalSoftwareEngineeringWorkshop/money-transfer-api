@@ -33,6 +33,9 @@ Create a user with an encrypted password
 Assign or grant privileges (such as SELECT, UPDATE, DELETE, ...) to the user for that database  
 `GRANT ALL PRIVILEGES ON DATABASE moneytransfer TO moneytransfer;`  
 
+Login with the new user
+`psql -h localhost -Umoneytransfer -W moneytransfer`
+
 ### Travis CI - Continuous Integration
 Installing the Travis CI command line  
 `sudo gem install travis --no-document`
@@ -66,6 +69,7 @@ spring:
 2. App version, branch and committer display 
 3. Dockerize the application
 4. Test for TransferController
+5. Integrate Swagger/OpenApiSpecification API documentation
 
 
 #### Other notes

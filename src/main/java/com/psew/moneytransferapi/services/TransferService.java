@@ -17,6 +17,8 @@ import com.psew.moneytransferapi.repositories.TransferRepository;
 import com.psew.moneytransferapi.wrappers.TransferRequest;
 import com.psew.moneytransferapi.wrappers.TransferStatus;
 
+import javax.transaction.Transactional;
+
 /**
  * Transfer Service that defines the main business logic of creating, reading, updating and deleting transfers.
  *
@@ -61,6 +63,7 @@ public class TransferService {
 	 * @return The created Transfer object if everything is successful.
 	 * Otherwise, either AccountException or TransferException will be thrown.
 	 */
+	@Transactional
 	public Transfer transferMoney(TransferRequest transferRequest) throws AccountException, TransferException {
 
 		Account sender = accountService.getAccountById(transferRequest.getSenderId());

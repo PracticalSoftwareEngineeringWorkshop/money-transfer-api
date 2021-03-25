@@ -81,6 +81,7 @@ public class TransferServiceIntegrationTest {
         transferService.transferMoney(transferRequest);
     }
 
+    // This is another way of doing the above test (shouldFailToTransferMoneyToTheSameAccount())
     @Rule
     public ExpectedException exceptionRule = ExpectedException.none();
     @Test

@@ -57,6 +57,7 @@ public class Account {
 	private Integer pin;
 
 	@Column(nullable = false)
+	// Use BigDecimal
 	private Double balance = 0.0;
 
 	@Column(columnDefinition="boolean default true")
