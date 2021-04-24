@@ -33,6 +33,9 @@ Create a user with an encrypted password
 Assign or grant privileges (such as SELECT, UPDATE, DELETE, ...) to the user for that database  
 `GRANT ALL PRIVILEGES ON DATABASE moneytransfer TO moneytransfer;`  
 
+To grant the user Login privileges
+`ALTER USER moneytransfer WITH LOGIN;`
+
 Login with the new user
 `psql -h localhost -Umoneytransfer -W moneytransfer`
 
