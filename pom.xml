@@ -13,6 +13,7 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<name>money-transfer-api</name>
 	<description>Money Transfer API developed as a demo for Practical Software Engineering Workshop</description>
+	<packaging>jar</packaging>
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2020.0.1</spring-cloud.version>
@@ -68,7 +69,24 @@
 			<artifactId>h2</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!--
+		Starting with Spring Boot 2.4, JUnit 5’s vintage engine has been removed from spring-boot-starter-test.
+		If we still want to write tests using JUnit 4, we need to add the following Maven dependency.
+		https://www.baeldung.com/spring-boot-testing
+		-->
+		<dependency>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.hamcrest</groupId>
+					<artifactId>hamcrest-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -86,6 +104,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.4.4</version>
 				<configuration>
 					<excludes>
 						<exclude>
@@ -94,43 +113,6 @@
 						</exclude>
 					</excludes>
 				</configuration>
-			</plugin>
-
-			<!-- maven-surefire-plugin is designed for running unit tests and if any of the tests fail then it will fail the build immediately. -->
-			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<skipTests>false</skipTests>
-					<includes>
-						<!-- Default surefire includes -->
-						<include>**/Test*.java</include>
-						<include>**/*Test.java</include>
-						<include>**/*Tests.java</include>
-						<include>**/*TestCase.java</include>
-					</includes>
-				</configuration>
-			</plugin>
-
-			<!-- maven-failsafe-plugin is designed for running integration tests, and decouples failing the build if there are test failures from actually running the tests. -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<configuration>
-					<failIfNoTests>false</failIfNoTests>
-					<skipTests>false</skipTests>
-					<includes>
-						<!-- Our integration test naming convention -->
-						<include>**/*IntegrationTest.java</include>
-					</includes>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
