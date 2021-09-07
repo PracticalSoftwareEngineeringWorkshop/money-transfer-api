@@ -48,7 +48,7 @@ public class AccountControllerIntegrationTest extends AbstractBaseTest {
                 .andExpect(status().isCreated())
                 .andDo(print())
                 .andExpect(jsonPath("$.message")
-                        .value("Account with id 5 is created successfully."));
+                        .value("Account with id 4 is created successfully."));
     }
 
     @Test

@@ -1,0 +1,13 @@
+@startuml blogging-context
+title Blogging Context
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Deployment.puml
+
+Person(author, "Author")
+System(blog, "Acme Blog")
+Rel(author, blog, "creates post")
+Rel(author, blog, "updates post")
+
+Person_Ext(reader, "Reader")
+Rel(reader, blog, "reads post", "https")
+
+@enduml

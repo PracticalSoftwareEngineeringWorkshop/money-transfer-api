@@ -4,7 +4,7 @@ Travis CI build status: [![Build Status](https://travis-ci.com/PracticalSoftware
 # Money Transfer API
 A Spring boot application with a Postgresql database that provides an API for creating and managing accounts and money transfers.
 
-### Verisons
+### Versions
 Spring Boot: 2.4.3  
 Postgres: 10.5  
 Java (jdk): 11.0.5-zulu  
