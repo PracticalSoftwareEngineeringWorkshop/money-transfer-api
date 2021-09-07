@@ -40,13 +40,16 @@ To grant the user Login privileges
 Login with the new user
 `psql -h localhost -Umoneytransfer -W moneytransfer`
 
-### Travis CI - Continuous Integration
-Installing the Travis CI command line  
-`sudo gem install travis --no-document`
+### Testing
+[Testing in Spring Boot](https://www.baeldung.com/spring-boot-testing)  
 
-#### Notes on Travis CI
-[Travis CI Build Pipeline](https://www.baeldung.com/travis-ci-build-pipeline)  
-[CI/CD Spring Boot App using Travis CI](https://www.javacodegeeks.com/2018/01/ci-cd-springboot-applications-using-travis-ci.html)  
+### GitHub Actions - automating CI/CD
+[Building and testing Java with Maven](https://docs.github.com/en/actions/guides/building-and-testing-java-with-maven)  
+[GitHub Action Deploy to Heroku](https://github.com/marketplace/actions/deploy-to-heroku)  
+[Github Actions - Managing complex workflows](https://docs.github.com/en/actions/learn-github-actions/managing-complex-workflows)
+
+##### Another reading  
+[Automatic deployment to Heroku CI/CD Spring Boot + Maven + Github Actions](https://www.nearsure.net/blog/automatic-deployment-to-heroku-ci-cd-spring-boot-maven-github-actions)  
 
 ### Heroku - for deploying app to production/live
 Checking the application log from command line  
@@ -75,6 +78,14 @@ spring:
 4. Test for TransferController
 5. Integrate Swagger/OpenApiSpecification API documentation
 
-
 #### Other notes
 [Writing Markdown document such as this read me file](https://www.markdownguide.org/basic-syntax/)
+
+## Deprecated
+### Travis CI - Continuous Integration
+Installing the Travis CI command line  
+`sudo gem install travis --no-document`
+
+#### Notes on Travis CI
+[Travis CI Build Pipeline](https://www.baeldung.com/travis-ci-build-pipeline)  
+[CI/CD Spring Boot App using Travis CI](https://www.javacodegeeks.com/2018/01/ci-cd-springboot-applications-using-travis-ci.html)  
