@@ -1,5 +1,6 @@
 package com.psew.moneytransferapi;
 
+import com.psew.moneytransferapi.repositories.AccountRepository;
 import com.psew.moneytransferapi.repositories.TransferRepository;
 import org.junit.After;
 import org.junit.Before;
@@ -17,23 +18,23 @@ import static org.mockito.BDDMockito.given;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @AutoConfigureTestDatabase
-public class MockTransferRepositoryUnitTest {
+public class MockAccountRepositoryUnitTest {
 
     @MockBean
-    private TransferRepository repository;
+    private AccountRepository repository;
 
     @Before
-    public void setupTransferRepositoryMock() {
-        given(repository.count()).willReturn(5L);
+    public void setupAccountRepositoryMock() {
+        given(repository.count()).willReturn(3L);
     }
 
     @Test
-    public void should_transfers_exist() {
-        assertThat(repository.count()).isEqualTo(5L);
+    public void shouldReturn3Accounts() {
+        assertThat(repository.count()).isEqualTo(3L);
     }
 
     @After
-    public void resetTransferRepositoryMock() {
+    public void resetAccountRepositoryMock() {
         Mockito.reset(repository);
     }
 }
