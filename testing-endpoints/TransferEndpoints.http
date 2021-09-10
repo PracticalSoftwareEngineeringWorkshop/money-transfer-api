@@ -2,6 +2,10 @@
 GET {{host-url}}{{base-url}}/transfer/1
 Content-Type: application/json
 
+### Get All Transfers
+GET {{host-url}}{{base-url}}/transfer/list
+Content-Type: application/json
+
 ### Transfer Money
 POST {{host-url}}{{base-url}}/transfer
 Content-Type: application/json
