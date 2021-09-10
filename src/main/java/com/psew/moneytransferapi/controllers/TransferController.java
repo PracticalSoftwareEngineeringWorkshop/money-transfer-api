@@ -55,6 +55,16 @@ public class TransferController {
 	}
 
 	/**
+	 * Retrieves all transfers
+	 *
+	 * @return List of Transfer objects
+	 */
+	@GetMapping("/list")
+	public Iterable<Transfer> getAllTransfers() {
+		return transferService.getAllTransfers();
+	}
+
+	/**
 	 * Given the id of the transfer data to delete, it removes it from the database
 	 *
 	 * @param transferId transfer id that needs to be deleted

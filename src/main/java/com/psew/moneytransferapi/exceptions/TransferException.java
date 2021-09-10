@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class TransferException extends RuntimeException {
 
-    public static final String INVALID_TRANSFER_ID_EXCEPTION = "Transfer is invalid.";
+    public static final String INVALID_TRANSFER_ID_EXCEPTION = "Transfer ID is invalid.";
     public static final String INSUFFICIENT_BALANCE_EXCEPTION = "Insufficient balance";
     public static final String SAME_ACCOUNT_TRANSFER_EXCEPTION = "Both sender and receiver cannot be the same account";
 

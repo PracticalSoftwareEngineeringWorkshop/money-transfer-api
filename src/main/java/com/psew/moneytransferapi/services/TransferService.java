@@ -50,6 +50,15 @@ public class TransferService {
 	}
 
 	/**
+	 * Retrieves all transfers that have occurred in the past
+	 *
+	 * @return Iterable<Transfer>
+	 */
+	public Iterable<Transfer> getAllTransfers() {
+		return transferRepository.findAll();
+	}
+
+	/**
 	 * Main business logic for transferring money from one account to another.
 	 * <p>
 	 * Requirements for successful money transfer:
