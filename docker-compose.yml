@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: 'postgres:13.1-alpine'
+    expose:
+      - "5432"
+    ports:
+      - "65432:5432"
+    container_name: postgres
+    environment:
+      - POSTGRES_DB=moneytransfer
+      - POSTGRES_USER=moneytransfer
+      - POSTGRES_PASSWORD=m0n3ytr4n5f3r
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  app:
+    image: 'money-transfer-api:latest'
+    build:
+      context: .
+    container_name: app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:65432/moneytransfer
+      - SPRING_DATASOURCE_USERNAME=moneytransfer
+      - SPRING_DATASOURCE_PASSWORD=m0n3ytr4n5f3r
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+
