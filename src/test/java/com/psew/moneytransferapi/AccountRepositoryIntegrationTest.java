@@ -2,36 +2,47 @@ package com.psew.moneytransferapi;
 
 import com.psew.moneytransferapi.domains.Account;
 import com.psew.moneytransferapi.repositories.AccountRepository;
-import com.psew.moneytransferapi.util.TestDataGenerator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import java.time.LocalDate;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
+@SpringBootTest
 @AutoConfigureTestDatabase
 public class AccountRepositoryIntegrationTest {
-
-    @Autowired
-    private TestEntityManager mgr;
 
     @Autowired
     private AccountRepository accountRepository;
 
     @Test
-    public void shouldPersistAndRetrieveAccount() {
+    public void shouldCreateAnAccountInDB() {
 
-        Long id = mgr.persistAndGetId(TestDataGenerator.createAccount(), Long.class);
+        // Builder pattern (@Builder)
+        // GIVEN
+        Account account = Account.builder()
+                .firstName("John")
+                .lastName("Smith")
+                .dateOfBirth(LocalDate.of(2000, 1, 1))
+                .phoneNumber("12345555")
+                .email("john@doe.com")
+                .pin(1234)
+                .balance(450.0)
+                .build();
 
-        Account account = accountRepository.findById(id).get();
+        // WHEN
+        Account savedAccount = accountRepository.save(account);
 
-        assertThat(account.getFirstName()).isEqualTo("Jane");
-        assertThat(account.getLastName()).isEqualTo("Doe");
+        // THEN
+        assertThat(savedAccount).isNotNull();
+        assertThat(savedAccount.getId()).isEqualTo(4L);
+
+        assertThat(savedAccount.getFirstName()).isEqualTo("John");
+        assertThat(savedAccount.getFirstName()).isEqualTo(account.getFirstName());
     }
 }
