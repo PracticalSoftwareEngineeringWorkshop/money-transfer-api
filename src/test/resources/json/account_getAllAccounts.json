@@ -5,6 +5,7 @@
     "lastName": "Asnake",
     "email": "biniamasnake@gmail.com",
     "phoneNumber": "+251000000000",
+    "dateOfBirth": "2021-09-10",
     "pin": 0,
     "balance": 1400.0,
     "isVerified": true
@@ -15,6 +16,7 @@
     "lastName": "Doe",
     "email": "johndoe@gmail.com",
     "phoneNumber": "+49555555555",
+    "dateOfBirth": "2021-09-10",
     "pin": 5555,
     "balance": 1600.0,
     "isVerified": true
@@ -25,6 +27,7 @@
     "lastName": "tobedeleted",
     "email": "tobedeleted@gmail.com",
     "phoneNumber": "0",
+    "dateOfBirth": "2021-09-10",
     "pin": 0,
     "balance": 0.0,
     "isVerified": true
@@ -35,6 +38,7 @@
     "lastName": "Doe",
     "email": "janedoe@example.com",
     "phoneNumber": "+4911111111",
+    "dateOfBirth": "1988-01-01",
     "pin": 1234,
     "balance": 400.0,
     "isVerified": true

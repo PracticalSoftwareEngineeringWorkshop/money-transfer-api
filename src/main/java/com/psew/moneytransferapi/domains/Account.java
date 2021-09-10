@@ -8,11 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 
 /**
  * Account domain that represents a bank account
@@ -34,6 +37,7 @@ public class Account {
 
 	@Column(nullable = false)
 	@NotBlank(message = "First name is mandatory")    // the field must be not null and their trimmed length must be greater than zero.
+	@Size(max = 15, min = 3)
 	private String firstName;
 
 	@Column(nullable = false)
@@ -49,6 +53,10 @@ public class Account {
 	@Column(nullable = false, unique = true)
 	@NotBlank(message = "Phone number is mandatory")
 	private String phoneNumber;
+
+	@NotNull(message = "Date of birth is mandatory.")
+	@Column(nullable = false)
+	private LocalDate dateOfBirth;
 
 	// We check for null only here because pin has Integer type
 	// https://www.baeldung.com/java-bean-validation-not-null-empty-blank

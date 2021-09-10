@@ -1,8 +1,6 @@
 package com.psew.moneytransferapi.services;
 
-import static com.psew.moneytransferapi.exceptions.AccountException.ACCOUNT_NOT_FOUND_EXCEPTION;
-import static com.psew.moneytransferapi.exceptions.AccountException.INVALID_ACCOUNT_EXCEPTION;
-
+import com.psew.moneytransferapi.utils.AgeCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +9,9 @@ import com.psew.moneytransferapi.exceptions.AccountException;
 import com.psew.moneytransferapi.repositories.AccountRepository;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+
+import static com.psew.moneytransferapi.exceptions.AccountException.*;
 
 /**
  * Account Service accepts requests from the Controller and communicates with the repository to save and retrieve data.
@@ -31,8 +32,16 @@ public class AccountService {
 		return accountRepository.findAll();
 	}
 
-	public Account createAccount(Account account) throws Exception {
-		return accountRepository.save(account);
+	public Account createAccount(Account account) {
+
+		// validation
+		int age = AgeCalculator.calculateAge(account.getDateOfBirth(), LocalDate.now());
+
+		if (age > 15) {
+			return accountRepository.save(account);
+		} else {
+			throw new AccountException(UNDER_AGE_ACCOUNT_CREATION_EXCEPTION);
+		}
 	}
 
 	public Account getAccountById(Long id) {

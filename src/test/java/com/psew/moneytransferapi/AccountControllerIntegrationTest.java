@@ -1,6 +1,7 @@
 package com.psew.moneytransferapi;
 
 import com.psew.moneytransferapi.util.TestDataGenerator;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -25,10 +26,10 @@ public class AccountControllerIntegrationTest extends AbstractBaseTest {
     @Test
     public void shouldGetAllAccountsAndReturnHttpOk() throws Exception {
         mvc.perform(
-                get(BASE_URL + "/list")
-                        .accept(MediaType.APPLICATION_JSON)
-                        .contentType(MediaType.APPLICATION_JSON)
-        )
+                        get(BASE_URL + "/list")
+                                .accept(MediaType.APPLICATION_JSON)
+                                .contentType(MediaType.APPLICATION_JSON)
+                )
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
@@ -39,12 +40,12 @@ public class AccountControllerIntegrationTest extends AbstractBaseTest {
     public void shouldCreateAccountAndReturnCreatedStatusAndMessage() throws Exception {
 
         mvc.perform(
-                post(BASE_URL + "/create")
-                        .accept(MediaType.APPLICATION_JSON)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        // Here we are using the Account object defined in TestDataGenerator.java
-                        .content(objectMapper.writeValueAsString(TestDataGenerator.createAccount()))
-        )
+                        post(BASE_URL + "/create")
+                                .accept(MediaType.APPLICATION_JSON)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                // Here we are using the Account object defined in TestDataGenerator.java
+                                .content(objectMapper.writeValueAsString(TestDataGenerator.createAccount()))
+                )
                 .andExpect(status().isCreated())
                 .andDo(print())
                 .andExpect(jsonPath("$.message")
@@ -55,25 +56,47 @@ public class AccountControllerIntegrationTest extends AbstractBaseTest {
     public void shouldReturnAnErrorWhenCreatingAccountWithDuplicateData() throws Exception {
 
         String data = "{" +
-                "  \"firstName\": \"Biniam\"," +
-                "  \"lastName\": \"Asnake\"," +
-                "  \"email\" : \"biniamasnake@gmail.com\"," +
-                "  \"phoneNumber\": \"+251966272502\"," +
-                "  \"pin\": \"1234\"," +
-                "  \"balance\": 2000" +
+                "\"firstName\": \"Biniam\"," +
+                "\"lastName\": \"Asnake\"," +
+                "\"email\" : \"biniamasnake@gmail.com\"," +
+                "\"phoneNumber\": \"+251966272502\"," +
+                "\"dateOfBirth\": \"1990-10-10\"," +
+                "\"pin\": \"1234\"," +
+                "\"balance\": 2000.0" +
                 "}";
 
         mvc.perform(
-                post(BASE_URL + "/create")
-                        .accept(MediaType.APPLICATION_JSON)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        // Here we are using the Account object defined in the above 'data' JSON
-                        .content(data)
-        )
+                        post(BASE_URL + "/create")
+                                .accept(MediaType.APPLICATION_JSON)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                // Here we are using the Account object defined in the above 'data' JSON
+                                .content(data)
+                )
                 .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(content().json(readExpectedResponse("account_createAccount_error"), true));
+    }
+
+    @Ignore
+    public void shouldFailBecausePhoneNumberAndEmailIsNotEmpty() throws Exception {
+
+        String payload = "{\n" +
+                "  \"firstName\": \"Jane2\",\n" +
+                "  \"middleName\": \"G.2\",\n" +
+                "  \"lastName\": \"Doe2\",\n" +
+                "  \"dateOfBirth\": \"2000-01-01\",\n" +
+                "  \"pin\": 233222\n" +
+                "}";
+
+        mvc.perform(
+                        post(BASE_URL + "/create")
+                                .accept(MediaType.APPLICATION_JSON)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(payload)
+                )
+                .andDo(print())
+                .andExpect(status().isBadRequest());
     }
 
     @Test
@@ -88,12 +111,12 @@ public class AccountControllerIntegrationTest extends AbstractBaseTest {
                 "}";
 
         mvc.perform(
-                put(BASE_URL + "/" + 4)
-                        .accept(MediaType.APPLICATION_JSON)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        // Here we are using the Account object defined in the above 'data' JSON
-                        .content(data)
-        )
+                        put(BASE_URL + "/" + 4)
+                                .accept(MediaType.APPLICATION_JSON)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                // Here we are using the Account object defined in the above 'data' JSON
+                                .content(data)
+                )
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andExpect(jsonPath("$.message")
@@ -104,10 +127,10 @@ public class AccountControllerIntegrationTest extends AbstractBaseTest {
     public void shouldDeleteAccountByIdAndReturnHttpOkAndMessage() throws Exception {
 
         mvc.perform(
-                delete(BASE_URL + "/" + 3)
-                        .accept(MediaType.APPLICATION_JSON)
-                        .contentType(MediaType.APPLICATION_JSON)
-        )
+                        delete(BASE_URL + "/" + 3)
+                                .accept(MediaType.APPLICATION_JSON)
+                                .contentType(MediaType.APPLICATION_JSON)
+                )
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andExpect(jsonPath("$.message")
@@ -118,10 +141,10 @@ public class AccountControllerIntegrationTest extends AbstractBaseTest {
     public void shouldReturnErrorWhenDeletingAccountByIdWithWrongId() throws Exception {
 
         mvc.perform(
-                delete(BASE_URL + "/" + 0)
-                        .accept(MediaType.APPLICATION_JSON)
-                        .contentType(MediaType.APPLICATION_JSON)
-        )
+                        delete(BASE_URL + "/" + 0)
+                                .accept(MediaType.APPLICATION_JSON)
+                                .contentType(MediaType.APPLICATION_JSON)
+                )
                 .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
