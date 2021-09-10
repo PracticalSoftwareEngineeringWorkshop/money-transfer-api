@@ -12,6 +12,41 @@ Java (jdk): 11.0.5-zulu
 ### Contact Developer(s)
 Biniam Asnake <biniamasnake@gmail.com>  
 
+### Running Spring Boot app from the command line using Maven
+`./mvnw spring-boot:run`  
+
+### Building and Running Docker image
+[Running a Multi-container (Spring Boot and PostgreSQL) Application with Docker Compose](https://www.section.io/engineering-education/running-a-multi-container-springboot-postgresql-application-with-docker-compose/)    
+[Docker : Zero to Hero (with SpringBoot + Postgres)](https://isurunuwanthilaka.medium.com/docker-zero-to-hero-with-springboot-postgres-e0b8c3a4dccb)
+[Spring Boot with PostgreSQL and Docker Compose](https://gustavopeiretti.com/spring-boot-with-postgresql-and-docker-compose/)    
+
+`docker build -t money-transfer-api .`  -t for tagging the image with given name.  
+`docker run -p 8080:8080 money-transfer-api`  
+
+### Run the multi-container application
+To test all you have been putting together, open up the terminal, navigate to the Spring Boot project directory where you have the `docker-compose.yml`, and run:    
+`docker-compose up -d`  
+
+To stop all the services in the terminal, run:  
+`docker-compose down`  
+
+### Connecting to Postgres DB running in the Docker
+Option 1  
+`psql postgresql://moneytransfer:m0n3ytr4n5f3r@localhost:65432/moneytransfer`  
+
+Option 2  
+`docker exec -it postgres psql -U moneytransfer`  
+
+Option 3  
+```
+$ docker exec -it postgres bash
+# su moneytransfer
+$ psql
+```  
+
+You can spin up a Postgres DB just like:  
+`docker run --rm -P -p 127.0.0.1:65432:5432 -e POSTGRES_PASSWORD="m0n3ytr4n5f3r" --name postgres postgres:13.1-alpine`  
+
 ### Code Repository
 [Github](https://github.com/PracticalSoftwareEngineeringWorkshop/money-transfer-api)  
 Main/Master branch name: `main`  
