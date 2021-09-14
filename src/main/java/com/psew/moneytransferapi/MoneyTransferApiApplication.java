@@ -20,6 +20,9 @@ public class MoneyTransferApiApplication {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
 						.allowedOrigins("*");
+				//		.allowedOrigins("http://localhost:3000",
+				//			"https://money-transfer-web-app-biniam.herokuapp.com",
+				//			"https://practicalsoftwareengineeringworkshop.github.io/money-transfer-web-app/");
 			}
 		};
 	}
