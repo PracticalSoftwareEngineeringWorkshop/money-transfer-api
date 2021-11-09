@@ -12,7 +12,7 @@
 	<artifactId>money-transfer-api</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>money-transfer-api</name>
-	<description>Money Transfer API developed as a demo for Practical Software Engineering Workshop</description>
+	<description>Money Transfer API for managing accounts and transfer money between accounts</description>
 	<packaging>jar</packaging>
 	<properties>
 		<java.version>11</java.version>
