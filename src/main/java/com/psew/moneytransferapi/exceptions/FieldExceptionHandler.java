@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * The @ExceptionHandler annotation allows us to handle specified types of exceptions through one single method.
- *
- * Source: https://www.baeldung.com/spring-boot-bean-validation#the-exceptionhandler-annotation
  */
 public class FieldExceptionHandler {
 

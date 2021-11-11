@@ -32,15 +32,14 @@ import lombok.NoArgsConstructor;
  *
  * @author Biniam Asnake
  */
-@Data                       // Lombok annotation to generate Setters and Getters, toString() methods
-@AllArgsConstructor         // Generates All arguments constructor
-@NoArgsConstructor          // Generates No arguments constructor
-@Entity                     // Specifies that the class is an entity. It will generate a table in the database
-@Table(name = "transfer")   // Specifies the table name. [Optional]
-@Builder                    // Creates a builder for the class which makes constructing an object easy based on the Builder Pattern
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "transfer")
+@Builder
 public class Transfer {
 
-	// Generates a unique ID for the Transfer automatically
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -48,15 +47,15 @@ public class Transfer {
 	@Column(nullable = false)
 	private String uuid;
 
-	@NotNull(message = "Sender account is mandatory")    // the field must be not null
+	@NotNull(message = "Sender account is mandatory")
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Account sender;
 
-	@NotNull(message = "Receiver account is mandatory")    // the field must be not null
+	@NotNull(message = "Receiver account is mandatory")
 	@ManyToOne(fetch = FetchType.EAGER)
     private Account receiver;
 
-	@NotNull(message = "Amount is mandatory")    // the field must be not null
+	@NotNull(message = "Amount is mandatory")
 	@Column(nullable = false)
     private Double amount;
 
@@ -64,8 +63,6 @@ public class Transfer {
     private Date date;
 
 	@Column(columnDefinition="text")
-	// Setting columnDefinition to text makes sure that we can enter as much text as we want.
-	// default: nullable = true
 	private String reason;
 
 	@Enumerated(EnumType.STRING)
@@ -79,12 +76,6 @@ public class Transfer {
 			uuid = UUID.randomUUID().toString();
 	}
 
-    /**
-     * Overridden equals and hashCode methods to compare two Transfer objects based on sender, receiver, amount, reason and date.
-     *
-     * @param object: Transfers to compare
-     * @return true if objects are equal. Otherwise, false.
-     */
     @Override
     public boolean equals(Object object) {
 

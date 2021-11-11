@@ -19,8 +19,6 @@
 		<spring-cloud.version>2020.0.1</spring-cloud.version>
 	</properties>
 	<dependencies>
-		<!-- The app must be a webapp to have an embedded container (e.g. Tomcat) on the classpath. -->
-		<!-- Otherwise, the app starts and shuts down automatically. -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -39,7 +37,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<!-- Added for validating domain classes -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
@@ -69,11 +66,6 @@
 			<artifactId>h2</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!--
-		Starting with Spring Boot 2.4, JUnit 5’s vintage engine has been removed from spring-boot-starter-test.
-		If we still want to write tests using JUnit 4, we need to add the following Maven dependency.
-		https://www.baeldung.com/spring-boot-testing
-		-->
 		<dependency>
 			<groupId>org.junit.vintage</groupId>
 			<artifactId>junit-vintage-engine</artifactId>
@@ -100,8 +92,6 @@
 	</dependencyManagement>
 
 	<build>
-		<!-- If we enable this, the name of the jar file will change. Then, you should change the Procfile for Heroku deployment -->
-		<!--<finalName>money-transfer-api</finalName>-->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

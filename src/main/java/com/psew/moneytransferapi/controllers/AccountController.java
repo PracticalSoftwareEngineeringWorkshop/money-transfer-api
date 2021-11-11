@@ -51,28 +51,12 @@ public class AccountController {
         }
     }
 
-    /**
-     * Get account by Id
-     * Given the id, get account data
-     *
-     * @param accountId account id to fetch
-     * @return Account account object retrieved
-     */
     @GetMapping("/{accountId}")
     public Account getAccount(@PathVariable("accountId") Long accountId) {
 
         return accountService.getAccountById(accountId);
     }
 
-    /**
-     * Updates account
-     * Given the id and the updated account data, this operation makes modifications to an existing object
-     *
-     * @param accountId account id that needs to be deleted
-     * @param account   account object to be updated
-     * @return code = 200, message = Account with id {accountId} is updated successfully.
-     * code = 400, error = Error updating Account in database. Please verify you send all required fields
-     */
     @PutMapping("/{accountId}")
     public ResponseEntity<?> updateAccount(@PathVariable("accountId") Long accountId, @RequestBody Account account) {
         try {
@@ -89,19 +73,6 @@ public class AccountController {
                 .body("{\"message\" : \"Account with id " + accountId + " is updated successfully.\"}");
     }
 
-    /**
-     * LESSON: WRITING COMMENT FOR OPERATIONS THAT ARE SOMEHOW COMPLEX IS RECOMMENDED.
-     * <p>
-     * Deletes an Account given a valid ID
-     * <p>
-     * Steps:
-     * - Delete the account by calling the method in {@link AccountService}
-     * - Check if the method call returned True and if so, return a 200 response
-     *
-     * @param accountId Account ID passed as path variable with String datatype
-     * @return ResponseEntity with HTTPStatus = 200 if account is deleted successfully
-     * ResponseEntity with HTTPStatus = 404 if account deletion failed
-     */
     @DeleteMapping(path = "/{accountId}", produces = "application/json")
     public ResponseEntity<?> deleteByAccountId(@PathVariable("accountId") Long accountId) {
 

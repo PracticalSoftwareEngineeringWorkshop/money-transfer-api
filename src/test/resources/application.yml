@@ -4,8 +4,6 @@
 #    url: jdbc:h2:mem:money-transfer-db;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
 #    username: sa
 #    password: sa
-#    # In Spring boot 2, database initialization only works for embedded databases (H2, HSQLDB).
-#    # If you want to use it for other databases, you need to change the
 #  jpa.show-sql: true
 #  jpa.hibernate.ddl-auto: update
 #  sql:

@@ -10,18 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
 
-/**
- * A database repository that extends Create, Read, Update and Delete Repository.
- * It comes with built-in methods for reading from and storing to a database table.
- *
- * @author Biniam Asnake
- */
 @Repository
 public interface AccountRepository extends CrudRepository<Account, Long> {
 
-    // This is how you create a custom query to perform database operation
     @Modifying
-    @Transactional
     @Query(value = "UPDATE Account " +
             "SET firstName = :firstName, " +
             "    lastName = :lastName, " +

@@ -40,7 +40,6 @@ public class TransferServiceIntegrationTest {
     @Before
     public void setUp() {
 
-        //given
         transferRequest = TransferRequest.builder()
                 .senderId(1L)
                 .receiverId(2L)
@@ -52,17 +51,15 @@ public class TransferServiceIntegrationTest {
     @Test
     public void shouldTransferMoneyFromOneValidAccountToAnotherOne() {
 
-        //when
         Transfer createdTransfer = transferService.transferMoney(transferRequest);
 
-        //then
         assertNotNull(createdTransfer.getId());
         assertEquals(transferRequest.getSenderId(), createdTransfer.getSender().getId());
         assertEquals(transferRequest.getReceiverId(), createdTransfer.getReceiver().getId());
         assertEquals(transferRequest.getAmount(), createdTransfer.getAmount());
         assertEquals(transferRequest.getReason(), createdTransfer.getReason());
         assertEquals(TransferStatus.SUCCESSFUL, createdTransfer.getStatus());
-        
+
         Account senderAccount = accountService.getAccountById(1L);
         Account receiverAccount = accountService.getAccountById(2L);
 
@@ -73,10 +70,9 @@ public class TransferServiceIntegrationTest {
     @Test
     public void shouldFailToTransferMoneyIfBalanceIsInsufficient() {
         Exception exception = assertThrows(TransferException.class, () -> {
-            //given
+
             transferRequest.setAmount(1000000.00);
 
-            //when
             transferService.transferMoney(transferRequest);
         });
 
@@ -89,25 +85,8 @@ public class TransferServiceIntegrationTest {
     @Test(expected = TransferException.class)
     public void shouldFailToTransferMoneyToTheSameAccount() {
 
-        //given
         transferRequest.setReceiverId(1L);
 
-        //when
-        transferService.transferMoney(transferRequest);
-    }
-
-    // This is another way of doing the above test (shouldFailToTransferMoneyToTheSameAccount())
-    @Rule
-    public ExpectedException exceptionRule = ExpectedException.none();
-    @Test
-    public void shouldFailToTransferMoneyToTheSameAccount_anotherImplementation() {
-        exceptionRule.expect(TransferException.class);
-        exceptionRule.expectMessage("Both sender and receiver cannot be the same account");
-
-        //given
-        transferRequest.setReceiverId(1L);
-
-        //when
         transferService.transferMoney(transferRequest);
     }
 }

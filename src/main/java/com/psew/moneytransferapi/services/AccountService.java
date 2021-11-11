@@ -34,7 +34,6 @@ public class AccountService {
 
 	public Account createAccount(Account account) {
 
-		// validation
 		int age = AgeCalculator.calculateAge(account.getDateOfBirth(), LocalDate.now());
 
 		if (age > 15) {
@@ -49,25 +48,11 @@ public class AccountService {
 				.orElseThrow(() -> new AccountException(ACCOUNT_NOT_FOUND_EXCEPTION));
 	}
 
-	/**
-	 * Updates Account if it is available in the database
-	 *
-	 * @param accountId: ID of the account to be updated
-	 * @param account: Account to be updated
-	 * @return Nothing
-	 */
 	public void updateAccount(Long accountId, Account account) throws SQLException {
 
 		accountRepository.updateAccount(accountId, account.getFirstName(), account.getLastName(), account.getEmail(), account.getPhoneNumber(), account.getPin());
 	}
 
-	/**
-	 * Updates the balance of an Account if it is available in the {code}accounts{code} map
-	 *
-	 * @param account: Account to be updated
-	 * @param newBalance: the new balance that should be saved
-	 * @return The updated Account object
-	 */
 	public Account updateAccountBalance(Account account, Double newBalance) {
 
 		if (account == null) {

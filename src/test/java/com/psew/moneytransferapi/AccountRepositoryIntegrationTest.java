@@ -23,8 +23,6 @@ public class AccountRepositoryIntegrationTest {
     @Test
     public void shouldCreateAnAccountInDB() {
 
-        // Builder pattern (@Builder)
-        // GIVEN
         Account account = Account.builder()
                 .firstName("John")
                 .lastName("Smith")

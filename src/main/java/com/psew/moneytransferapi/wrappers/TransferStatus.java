@@ -9,10 +9,4 @@ public enum TransferStatus {
 
 	SUCCESSFUL,
 	FAILED;
-
-	/* It is possible to implement more statuses. To keep the application compact, we are not using the following statuses.
-	PENDING,
-	PROCESSING,
-	CANCELED,
-	 */
 }
