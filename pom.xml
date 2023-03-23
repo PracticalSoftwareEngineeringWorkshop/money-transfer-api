@@ -95,6 +95,7 @@
     <build>
         <finalName>money-transfer-api</finalName>
         <plugins>
+            <!-- https://www.baeldung.com/spring-boot-fix-the-no-main-manifest-attribute -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

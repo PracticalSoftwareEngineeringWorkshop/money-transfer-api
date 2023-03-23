@@ -128,6 +128,9 @@ Installing the Travis CI command line
 [Travis CI Build Pipeline](https://www.baeldung.com/travis-ci-build-pipeline)  
 [CI/CD Spring Boot App using Travis CI](https://www.javacodegeeks.com/2018/01/ci-cd-springboot-applications-using-travis-ci.html)  
 
+### Fly.io
+[GithubActions with Fly.io](https://medium.com/geekculture/deploy-docker-images-on-fly-io-free-tier-afbfb1d390b1)
+
 
 ```
 Postgres cluster money-transfer-api-db created

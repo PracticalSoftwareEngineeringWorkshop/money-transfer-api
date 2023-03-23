@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://<host>:5432/<dbname>?ssl=true&sslmode=require
-    username: <username>
-    password: <password>
+    url: jdbc:postgresql://top2.nearest.of.money-transfer-api-db.internal:5432/money_transfer_api?sslmode=disable
+    username: money_transfer_api
+    password: HeFy3vTYtH4sIJv
     initialization-mode: always
   jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect
   jpa.show-sql: true
