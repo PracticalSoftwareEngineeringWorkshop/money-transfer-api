@@ -94,6 +94,7 @@
     <build>
         <finalName>money-transfer-api</finalName>
         <plugins>
+            <!--Fix for Lombock error. Taken from https://stackoverflow.com/questions/66790818/java-build-has-started-failing-fatal-error-compiling-java-lang-illegalaccesse -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
