@@ -35,9 +35,11 @@ public abstract class AbstractBaseTest {
 
     private String readJson(final String fileName) {
         try {
-            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(
-                    objectMapper.readValue(new File(fileName), Object.class)
-            );
+            return objectMapper
+                    .writerWithDefaultPrettyPrinter()
+                    .writeValueAsString(
+                            objectMapper.readValue(new File(fileName), Object.class)
+                    );
         } catch (IOException e) {
             e.printStackTrace();
         }

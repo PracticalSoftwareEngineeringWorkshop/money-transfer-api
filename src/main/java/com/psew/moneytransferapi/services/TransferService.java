@@ -47,6 +47,7 @@ public class TransferService {
 		return transferRepository.findAll();
 	}
 
+	@Transactional
 	public Transfer transferMoney(TransferRequest transferRequest) throws AccountException, TransferException {
 
 		Account sender = accountService.getAccountById(transferRequest.getSenderId());
@@ -65,6 +66,8 @@ public class TransferService {
 
 			Double newReceiverBalance = receiver.getBalance() + transferRequest.getAmount();
 			Account updatedReceiverAccount = accountService.updateAccountBalance(receiver, newReceiverBalance);
+
+			// If you want, you can calculate fee for service
 
 			Transfer transfer = Transfer.builder()
 					.sender(updatedSenderAccount)

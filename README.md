@@ -48,7 +48,7 @@ You can spin up a Postgres DB just like:
 `docker run --rm -P -p 127.0.0.1:65432:5432 -e POSTGRES_PASSWORD="m0n3ytr4n5f3r" --name postgres postgres:13.1-alpine`  
 
 ### Code Repository
-[Github](https://github.com/PracticalSoftwareEngineeringWorkshop/money-transfer-api)  
+[GitHub](https://github.com/PracticalSoftwareEngineeringWorkshop/money-transfer-api)  
 Main/Master branch name: `main`  
 
 ### App production URL, CI and Deployment
@@ -75,13 +75,16 @@ To grant the user Login privileges
 Login with the new user
 `psql -h localhost -Umoneytransfer -W moneytransfer`
 
+### PlantUML
+[PlantUML for C4 Diagramming](https://github.com/plantuml-stdlib/C4-PlantUML)
+
 ### Testing
 [Testing in Spring Boot](https://www.baeldung.com/spring-boot-testing)  
 
 ### GitHub Actions - automating CI/CD
 [Building and testing Java with Maven](https://docs.github.com/en/actions/guides/building-and-testing-java-with-maven)  
 [GitHub Action Deploy to Heroku](https://github.com/marketplace/actions/deploy-to-heroku)  
-[Github Actions - Managing complex workflows](https://docs.github.com/en/actions/learn-github-actions/managing-complex-workflows)
+[GitHub Actions - Managing complex workflows](https://docs.github.com/en/actions/learn-github-actions/managing-complex-workflows)
 
 ##### Another reading  
 [Automatic deployment to Heroku CI/CD Spring Boot + Maven + Github Actions](https://www.nearsure.net/blog/automatic-deployment-to-heroku-ci-cd-spring-boot-maven-github-actions)  
@@ -108,8 +111,8 @@ spring:
 
 ## Roadmap - the next things to do
 1. Integrate Spring Security (with OAuth)
-2. App version, branch and committer display 
-3. Dockerize the application
+2. Display App version, branch and committer 
+3. (x) Dockerize the application
 4. Test for TransferController
 5. Integrate Swagger/OpenApiSpecification API documentation
 
@@ -124,3 +127,14 @@ Installing the Travis CI command line
 #### Notes on Travis CI
 [Travis CI Build Pipeline](https://www.baeldung.com/travis-ci-build-pipeline)  
 [CI/CD Spring Boot App using Travis CI](https://www.javacodegeeks.com/2018/01/ci-cd-springboot-applications-using-travis-ci.html)  
+
+
+```
+Postgres cluster money-transfer-api-db created
+  Username:    postgres
+  Password:    pt8GYPuuvrfV07Y
+  Hostname:    money-transfer-api-db.internal
+  Proxy port:  5432
+  Postgres port:  5433
+  Connection string: postgres://postgres:pt8GYPuuvrfV07Y@money-transfer-api-db.internal:5432
+```

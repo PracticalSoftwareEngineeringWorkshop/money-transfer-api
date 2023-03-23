@@ -1,13 +1,13 @@
-@startuml blogging-context
-title Blogging Context
+@startuml money_transfer_app_context
+title Money Transfer Application
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Deployment.puml
 
-Person(author, "Author")
-System(blog, "Acme Blog")
-Rel(author, blog, "creates post")
-Rel(author, blog, "updates post")
+Person(user, "User")
+System(system, "Money Transfer App")
 
-Person_Ext(reader, "Reader")
-Rel(reader, blog, "reads post", "https")
+Rel(user, system, "uses web app")
+
+Person_Ext(admin, "Admin")
+Rel(admin, system, "uses API")
 
 @enduml

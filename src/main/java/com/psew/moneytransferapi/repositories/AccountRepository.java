@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
 
@@ -22,5 +21,5 @@ public interface AccountRepository extends CrudRepository<Account, Long> {
             "    pin = :pin " +
             "WHERE id = :accountId")
     void updateAccount(@Param("accountId") Long accountId, @Param("firstName") String firstName, @Param("lastName") String lastName,
-                       @Param("email") String email, @Param("phoneNumber") String phoneNumber, @Param("pin") Integer pin) throws SQLException;;
+                       @Param("email") String email, @Param("phoneNumber") String phoneNumber, @Param("pin") Integer pin) throws SQLException;
 }

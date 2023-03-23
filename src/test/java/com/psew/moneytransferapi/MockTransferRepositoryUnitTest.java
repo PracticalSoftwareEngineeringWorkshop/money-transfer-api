@@ -28,7 +28,7 @@ public class MockTransferRepositoryUnitTest {
     }
 
     @Test
-    public void should_transfers_exist() {
+    public void shouldReturn5Transfers() {
         assertThat(repository.count()).isEqualTo(5L);
     }
 

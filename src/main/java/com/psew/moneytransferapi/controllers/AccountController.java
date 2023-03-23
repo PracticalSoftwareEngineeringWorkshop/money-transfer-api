@@ -35,7 +35,7 @@ public class AccountController {
     }
 
     @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> createAccount(@Valid @RequestBody Account account) throws Exception {
+    public ResponseEntity<?> createAccount(@Valid @RequestBody Account account) {
 
         try {
             Account createdAccount = accountService.createAccount(account);
@@ -47,7 +47,7 @@ public class AccountController {
             log.error("Error creating Account in database: ", e);
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
-                    .body("{\"error\" : \"Error creating Account in database. Please verify possible duplicates in the provided data.\"}");
+                    .body("{\"error\" : \"Error creating Account in database. Please verify that possible duplicates in the provided data.\"}");
         }
     }
 
@@ -65,7 +65,7 @@ public class AccountController {
             log.error("Error updating Account in database: ", e);
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
-                    .body("{\"error\" : \"Error updating Account in database. Please verify you send all required fields.\"}");
+                    .body("{\"error\" : \"Error updating Account in database. Please verify that you send all required fields.\"}");
         }
 
         return ResponseEntity
@@ -73,7 +73,7 @@ public class AccountController {
                 .body("{\"message\" : \"Account with id " + accountId + " is updated successfully.\"}");
     }
 
-    @DeleteMapping(path = "/{accountId}", produces = "application/json")
+    @DeleteMapping(path = "/{accountId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> deleteByAccountId(@PathVariable("accountId") Long accountId) {
 
         Boolean isAccountDeleted = accountService.deleteById(accountId);

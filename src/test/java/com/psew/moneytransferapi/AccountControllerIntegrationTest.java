@@ -79,7 +79,7 @@ public class AccountControllerIntegrationTest extends AbstractBaseTest {
     }
 
     @Ignore
-    public void shouldFailBecausePhoneNumberAndEmailIsNotEmpty() throws Exception {
+    public void shouldFailBecausePhoneNumberAndEmailIsEmpty() throws Exception {
 
         String payload = "{\n" +
                 "  \"firstName\": \"Jane2\",\n" +

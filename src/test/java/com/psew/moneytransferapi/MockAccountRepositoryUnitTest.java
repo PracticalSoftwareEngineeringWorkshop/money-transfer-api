@@ -1,7 +1,6 @@
 package com.psew.moneytransferapi;
 
 import com.psew.moneytransferapi.repositories.AccountRepository;
-import com.psew.moneytransferapi.repositories.TransferRepository;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

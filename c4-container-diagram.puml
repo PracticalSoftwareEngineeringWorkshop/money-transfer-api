@@ -1,0 +1,23 @@
+@startuml money_transfer_app_container
+title Money Transfer Application
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Deployment.puml
+
+Person(user, "User")
+System(webapp, "Money Transfer Web App")
+System(mobileapp, "Money Transfer Mobile App")
+System(adminwebapp, "Money Transfer AdminWeb App")
+System(api, "Money Transfer API")
+
+Rel(user, webapp, "uses web app")
+Rel(user, mobileapp, "uses mobile app")
+Rel(webapp, api, "uses API")
+Rel(mobileapp, api, "uses API")
+Rel(adminwebapp, api, "uses API")
+
+Person_Ext(admin, "Admin")
+Rel(admin, adminwebapp, "uses API")
+
+ContainerDb(db, "Database", "PostgreSQL", "Holds account & transfer information")
+Rel(api, db, "reads from and writes to")
+
+@enduml

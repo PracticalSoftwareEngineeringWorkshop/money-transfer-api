@@ -41,6 +41,6 @@ public class AccountRepositoryIntegrationTest {
         assertThat(savedAccount.getId()).isEqualTo(4L);
 
         assertThat(savedAccount.getFirstName()).isEqualTo("John");
-        assertThat(savedAccount.getFirstName()).isEqualTo(account.getFirstName());
+        assertThat(savedAccount.getLastName()).isEqualTo(account.getLastName());
     }
 }

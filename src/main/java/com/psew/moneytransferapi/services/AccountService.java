@@ -8,6 +8,7 @@ import com.psew.moneytransferapi.domains.Account;
 import com.psew.moneytransferapi.exceptions.AccountException;
 import com.psew.moneytransferapi.repositories.AccountRepository;
 
+import javax.transaction.Transactional;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
@@ -48,6 +49,7 @@ public class AccountService {
 				.orElseThrow(() -> new AccountException(ACCOUNT_NOT_FOUND_EXCEPTION));
 	}
 
+	@Transactional
 	public void updateAccount(Long accountId, Account account) throws SQLException {
 
 		accountRepository.updateAccount(accountId, account.getFirstName(), account.getLastName(), account.getEmail(), account.getPhoneNumber(), account.getPin());
