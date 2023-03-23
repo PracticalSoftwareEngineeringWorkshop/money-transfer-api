@@ -138,3 +138,97 @@ Postgres cluster money-transfer-api-db created
   Postgres port:  5433
   Connection string: postgres://postgres:pt8GYPuuvrfV07Y@money-transfer-api-db.internal:5432
 ```
+
+
+
+```
+➜  money-transfer-api git:(main) ✗ fly launch
+Update available 0.0.435 -> 0.0.496.
+Run "fly version update" to upgrade.
+Creating app in /Users/biniam.kefale/personal-code/money-transfer/money-transfer-api
+Scanning source code
+Detected a Dockerfile app
+? Create .dockerignore from 2 .gitignore files? Yes
+Created /Users/biniam.kefale/personal-code/money-transfer/money-transfer-api/.dockerignore from 2 .gitignore files.
+? Choose an app name (leave blank to generate one): money-transfer-api
+automatically selected personal organization: Biniam
+? Choose a region for deployment:  [Use arrows to move, type to filter]
+  Stockholm, Sweden (arn)
+? Choose a region for deployment: Frankfurt, Germany (fra)
+Error You must have a paid plan on organization Biniam to use the region fra. See our plans: https://fly.io/plans
+
+
+➜  money-transfer-api git:(main) ✗ fly launch
+Update available 0.0.435 -> 0.0.496.
+Run "fly version update" to upgrade.
+Creating app in /Users/biniam.kefale/personal-code/money-transfer/money-transfer-api
+Scanning source code
+Detected a Dockerfile app
+? Choose an app name (leave blank to generate one): money-transfer-api
+automatically selected personal organization: Biniam
+? Choose a region for deployment:  [Use arrows to move, type to filter]
+  Stockholm, Sweden (arn)
+? Choose a region for deployment:  [Use arrows to move, type to filter]
+  Amsterdam, Netherlands (ams)
+? Choose a region for deployment:  [Use arrows to move, type to filter]
+  Amsterdam, Netherlands (ams)
+? Choose a region for deployment:  [Use arrows to move, type to filter]
+  Amsterdam, Netherlands (ams)
+? Choose a region for deployment:  [Use arrows to move, type to filter]
+  Amsterdam, Netherlands (ams)
+? Choose a region for deployment:  [Use arrows to move, type to filter]
+  Amsterdam, Netherlands (ams)
+? Choose a region for deployment:  [Use arrows to move, type to filter]
+  Amsterdam, Netherlands (ams)
+? Choose a region for deployment:  [Use arrows to move, type to filter]
+  Amsterdam, Netherlands (ams)
+? Choose a region for deployment:  [Use arrows to move, type to filter]
+> Amsterdam, Netherlands (ams)
+? Choose a region for deployment:  [Use arrows to move, type to filter]
+  Chennai (Madras), India (maa)
+? Choose a region for deployment:  [Use arrows to move, type to filter]
+  Chennai (Madras), India (maa)
+? Choose a region for deployment:  [Use arrows to move, type to filter]
+  Chennai (Madras), India (maa)
+? Choose a region for deployment:  [Use arrows to move, type to filter]
+  Chennai (Madras), India (maa)
+? Choose a region for deployment:  [Use arrows to move, type to filter]
+  Chennai (Madras), India (maa)
+? Choose a region for deployment:  [Use arrows to move, type to filter]
+  Chennai (Madras), India (maa)
+? Choose a region for deployment:  [Use arrows to move, type to filter]
+  Chennai (Madras), India (maa)
+? Choose a region for deployment: Seattle, Washington (US) (sea)
+Created app money-transfer-api in organization personal
+Wrote config file fly.toml
+? Would you like to set up a Postgresql database now? Yes
+? Select configuration: Development - Single node, 1x shared CPU, 256MB RAM, 1GB disk
+Creating postgres cluster in organization personal
+Creating app...
+Setting secrets on app money-transfer-api-db...
+Provisioning 1 of 1 machines with image flyio/postgres:14.6@sha256:9cfb3fafcc1b9bc2df7c901d2ae4a81e83ba224bfe79b11e4dc11bb1838db46e
+Waiting for machine to start...
+Machine e286565eb54586 is created
+==> Monitoring health checks
+  Waiting for e286565eb54586 to become healthy (started, 3/3)
+
+Postgres cluster money-transfer-api-db created
+  Username:    postgres
+  Password:    pt8GYPuuvrfV07Y
+  Hostname:    money-transfer-api-db.internal
+  Proxy port:  5432
+  Postgres port:  5433
+  Connection string: postgres://postgres:pt8GYPuuvrfV07Y@money-transfer-api-db.internal:5432
+
+Save your credentials in a secure place -- you won't be able to see them again!
+
+Connect to postgres
+Any app within the Biniam organization can connect to this Postgres using the following connection string:
+
+Now that you've set up postgres, here's what you need to understand: https://fly.io/docs/reference/postgres-whats-next/
+
+Postgres cluster money-transfer-api-db is now attached to money-transfer-api
+The following secret was added to money-transfer-api:
+  DATABASE_URL=postgres://money_transfer_api:HeFy3vTYtH4sIJv@top2.nearest.of.money-transfer-api-db.internal:5432/money_transfer_api?sslmode=disable
+Postgres cluster money-transfer-api-db is now attached to money-transfer-api
+```

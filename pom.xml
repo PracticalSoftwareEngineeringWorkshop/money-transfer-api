@@ -17,6 +17,7 @@
     <properties>
         <java.version>11</java.version>
         <spring-cloud.version>2020.0.1</spring-cloud.version>
+        <start-class>com.psew.moneytransferapi.MoneyTransferApiApplication</start-class>
     </properties>
     <dependencies>
         <dependency>
@@ -94,6 +95,21 @@
     <build>
         <finalName>money-transfer-api</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.psew.moneytransferapi.MoneyTransferApiApplication</mainClass>
+                    <layout>JAR</layout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <!--Fix for Lombock error. Taken from https://stackoverflow.com/questions/66790818/java-build-has-started-failing-fatal-error-compiling-java-lang-illegalaccesse -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
